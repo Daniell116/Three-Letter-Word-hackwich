@@ -8,12 +8,16 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State private var letter = ""
+    @State private var counter = 0
+    let alphaet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
     var body: some View {
         VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+            Text("Three letter Word")
+                .font(Font.largeTitle)
+                .bold()
+                .padding()
+            Text("Tap to view this")
         }
         .padding()
     }
@@ -22,3 +26,17 @@ struct ContentView: View {
 #Preview {
     ContentView()
 }
+struct CustomLetterBox: View {
+    let color : Color
+    let text : String
+    var body: some View {
+        VStack {
+            color
+            Text(text)
+                .font(.system(size: 90))
+                .fontWeight(.heavy)
+        }
+        .frame(width: 120, height: 120)
+    }
+}
+

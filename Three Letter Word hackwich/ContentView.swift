@@ -10,12 +10,11 @@ import SwiftUI
 struct ContentView: View {
     @State private var letter = ""
     @State private var counter = 0
+    @State private var selectedLetters = ["", "",""]
     let alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
     var body: some View {
         VStack {
-            Text("Three letter Word")
-                .font(Font.largeTitle)
-                .bold()
+            Text("Three letter Word").font(.title).bold()
                 .padding()
             Text("Tap to gray box to change the color")
             CustomLetterBox(color: .gray, text: letter)
@@ -27,15 +26,25 @@ struct ContentView: View {
                         counter = 0
                     }
                 }
-            
+            Text("tap the red box to select that letter")
+            HStack {
+               ForEach(0..<3) { index in
+                   CustomLetterBox(color: .red, text: selectedLetters[index])
+                       .onTapGesture {
+                           selectedLetters[index] = letter
+                       }
+                   
+                }
+            }
         }
-        .padding()
     }
 }
 
 #Preview {
     ContentView()
 }
+
+
 struct CustomLetterBox: View {
     let color : Color
     let text : String

@@ -49,7 +49,7 @@ struct CustomLetterBox: View {
     let color : Color
     let text : String
     var body: some View {
-        VStack {
+        ZStack {
             color
             Text(text)
                 .font(.system(size: 90))

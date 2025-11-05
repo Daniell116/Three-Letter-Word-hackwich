@@ -10,14 +10,24 @@ import SwiftUI
 struct ContentView: View {
     @State private var letter = ""
     @State private var counter = 0
-    let alphaet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+    let alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
     var body: some View {
         VStack {
             Text("Three letter Word")
                 .font(Font.largeTitle)
                 .bold()
                 .padding()
-            Text("Tap to view this")
+            Text("Tap to gray box to change the color")
+            CustomLetterBox(color: .gray, text: letter)
+                .onTapGesture {
+                    let position = alphabet.index(alphabet.startIndex, offsetBy: counter)
+                    letter = String(alphabet[position])
+                    counter += 1
+                    if counter == alphabet.count {
+                        counter = 0
+                    }
+                }
+            
         }
         .padding()
     }
